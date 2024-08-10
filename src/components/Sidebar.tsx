@@ -1,13 +1,14 @@
 import { createSignal } from 'solid-js';
+import {Operator} from "../utils/expression_generation";
 
 interface SidebarProps {
   onDigitsChange: (digits: number) => void;
-  onOperatorChange: (operator: '+' | '*') => void;
+  onOperatorChange: (operator: Operator) => void;
 }
 
 function Sidebar(props: SidebarProps) {
   const [digits, setDigits] = createSignal(2);
-  const [operator, setOperator] = createSignal<'+' | '*'>('+');
+  const [operator, setOperator] = createSignal<Operator>('+');
 
   const updateProps = () => {
       props.onDigitsChange(digits());
@@ -31,7 +32,7 @@ function Sidebar(props: SidebarProps) {
         <select
           id="operator"
           value={operator()}
-          onChange={(e) => setOperator(e.currentTarget.value as '+' | '*')}
+          onChange={(e) => setOperator(e.currentTarget.value as Operator)}
         >
           <option value="+">+</option>
           <option value="*">*</option>

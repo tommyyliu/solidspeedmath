@@ -18,7 +18,7 @@ function PracticeSpace(props: PracticeSpaceProps) {
     const handleInput: JSX.EventHandler<HTMLInputElement, InputEvent> = (event) => {
         if (event.currentTarget.value == answer()) {
             event.currentTarget.value = '';
-            setExpression(generateExpression(props.digits, props.operator));
+            setExpression(generateExpression(props.mathProblemProps));
         }
     }
 
@@ -30,4 +30,4 @@ function PracticeSpace(props: PracticeSpaceProps) {
     );
 }
 
-export default MathProblem;
+export default PracticeSpace;

@@ -1,19 +1,20 @@
-import {random, floor, randomInt} from 'mathjs';
-import mathProblem from "../components/MathProblem";
+import {randomInt} from 'mathjs';
 
-const operators = ['+', '*'];
+export type Operator = '+' | '*';
 
 export interface MathProblemProps {
     digits: number;
-    operator: '+' | '*';
+    operator: Operator;
 }
 
-export function generateExpression(MathProblemProps mathProblemProps) {
-  const min = 10 ** (digits - 1);
-  const max = 10 ** digits - 1;
+export function generateExpression(mathProblemProps: MathProblemProps) {
+    const {digits, operator} = mathProblemProps;
 
-  const num1 = randomInt(min, max);
-  const num2 = randomInt(min, max);
+    const min = 10 ** (digits - 1);
+    const max = 10 ** digits - 1;
 
-  return `${num1} ${operator} ${num2}`;
+    const num1 = randomInt(min, max);
+    const num2 = randomInt(min, max);
+
+    return `${num1} ${operator} ${num2}`;
 }
